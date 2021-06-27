@@ -1,0 +1,102 @@
+Imports System
+Imports EPBot64
+Module Program
+	Private Structure TYPE_HAND
+		Dim suit() As String
+	End Structure
+	Sub Main(args As String())
+		Dim dealer, k, j, new_bid, position, vulnerability, suit, level As Integer
+		Dim meaning As String
+
+		Dim info() As Integer
+		Dim Player() As Object
+		Const C_PASS As Integer = 0
+		Const C_DOUBLE As Integer = 1
+		Const C_REDOUBLE As Integer = 2
+		Const C_CLUBS As Integer = 0
+		Const C_DIAMONDS As Integer = 1
+		Const C_HEARTS As Integer = 2
+		Const C_SPADES As Integer = 3
+		Const C_NT As Integer = 4
+		Const C_NS As Integer = 0
+		Const C_WE As Integer = 1
+		Const C_MP As Integer = 0
+		Const C_IMP As Integer = 1
+		Const C_INTERPRETED As Integer = 13
+
+		Dim hand() As TYPE_HAND
+
+		ReDim Player(3)
+
+		For k = 0 To 3
+			Player(k) = New EPBot
+		Next k
+
+		ReDim hand(3)
+
+		For k = 0 To 3
+			ReDim hand(k).suit(3)
+		Next
+
+		position = 0
+		dealer = 0
+		vulnerability = 0
+		hand(position).suit(3) = ""
+		hand(position).suit(2) = "AJ2"
+		hand(position).suit(1) = "AQ9765"
+		hand(position).suit(0) = "KQJ2"
+		Player(position).new_hand(position, hand(position).suit, dealer, vulnerability)
+		Player(position).scoring = C_IMP
+		new_bid = Player(position).get_bid
+		'---LHO
+		new_bid = C_PASS
+		Player(position).set_bid(position + 1, new_bid)
+		'---set bid of partner
+		new_bid = 1 * 5 + C_HEARTS
+		Player(position).set_bid(position + 2, new_bid)
+		'---RHO
+		new_bid = C_PASS
+		Player(position).set_bid(position + 3, new_bid)
+		'---Get bid for myself
+		new_bid = Player(position).get_bid
+		'---LHO
+		new_bid = C_PASS
+		Player(position).set_bid(position + 1, new_bid)
+		'---set bid of partner
+		new_bid = 3 * 5 + C_NT
+		Player(position).set_bid(position + 2, new_bid)
+		'---RHO
+		new_bid = C_PASS
+		Player(position).set_bid(position + 3, new_bid)
+		'---get bid
+		new_bid = Player(position).get_bid
+		level = new_bid \ 5
+		suit = new_bid Mod 5
+		Console.WriteLine("My Bid: " & level & " " & suit)
+		Player(position).interpret_bid(new_bid)
+		'---get info (string) from Player(position) about interpreted player
+		With Player(position)
+			meaning = Player(position).info_meaning(C_INTERPRETED)
+			Console.WriteLine("info_min_length (Spades): " & .info_min_length(C_INTERPRETED)(C_SPADES))
+			Console.WriteLine("info_min_length (Hearts): " & .info_min_length(C_INTERPRETED)(C_HEARTS))
+			Console.WriteLine("info_min_length (Diamonds): " & .info_min_length(C_INTERPRETED)(C_DIAMONDS))
+			Console.WriteLine("info_min_length (Clubs): " & .info_min_length(C_INTERPRETED)(C_CLUBS))
+		End With
+		Console.WriteLine(meaning)
+		Console.WriteLine(info)
+		Player = Nothing
+	End Sub
+
+	Private Function AsString(v As Object) As String
+		Dim value
+		value = ""
+		For I = 255 To 0 Step 1
+			value = value + " " + CStr(v(I))
+		Next
+		'For Each e As String In v
+		'	value = value + " " + e
+		'		Next
+		'Console.WriteLine(value)
+		Return value
+	End Function
+End Module

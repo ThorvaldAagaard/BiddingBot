@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "BiddingBot", "BiddingBot.vbproj", "{D571822D-5A3A-4DB6-846B-04E4D2511B20}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D571822D-5A3A-4DB6-846B-04E4D2511B20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D571822D-5A3A-4DB6-846B-04E4D2511B20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D571822D-5A3A-4DB6-846B-04E4D2511B20}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D571822D-5A3A-4DB6-846B-04E4D2511B20}.Debug|x86.Build.0 = Debug|Any CPU
+		{D571822D-5A3A-4DB6-846B-04E4D2511B20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D571822D-5A3A-4DB6-846B-04E4D2511B20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D571822D-5A3A-4DB6-846B-04E4D2511B20}.Release|x86.ActiveCfg = Release|x86
+		{D571822D-5A3A-4DB6-846B-04E4D2511B20}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {09480E50-373A-44AA-B34E-ABE33B17911F}
+	EndGlobalSection
+EndGlobal
